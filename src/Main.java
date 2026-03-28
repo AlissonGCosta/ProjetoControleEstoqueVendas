@@ -23,6 +23,8 @@ public class Main {
             int escolhaMenu = sc.nextInt();
             sc.nextLine();
 
+
+
             switch (escolhaMenu){
                 case 1:
 
@@ -41,12 +43,9 @@ public class Main {
                         listaProduto.add(newProduct);
                         newId++;
 
-                        for (Produto produtoadcionado : listaProduto) {
-                            System.out.println(produtoadcionado.getNome());
-                            System.out.println(produtoadcionado.getLote());
-                            System.out.println(produtoadcionado.getId());
 
-                        }
+                        System.out.println(newProduct.toString());
+
 
                         System.out.println("Digite deseja Continuar? (S/N):");
                         escolhaMenuProutos = sc.nextLine();
@@ -56,16 +55,16 @@ public class Main {
                     }
 
                     for(Produto produto : listaProduto) {
-                        System.out.println(produto.getNome());
-                        System.out.println(produto.getLote());
-                        System.out.println(produto.getId());
+                        System.out.println(produto);
                     }
 
 
 
                     break;
                 case 2:
-                    System.out.println("escolheu o 2");
+                    for(Produto produto : listaProduto) {
+                            System.out.println(produto);
+                    }
                     break;
                 case 3:
                     System.out.println("escolheu o 3");

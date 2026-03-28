@@ -16,9 +16,22 @@ public class Produto {
     }
 
     public int getLote() {
+
         return lote;
     }
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString(){
+
+      return
+                "==============================================="+
+                "\nProduto: "+ getNome() +
+                "\nLote: "+ getLote() +
+                "\nId: "+ getId() +
+                "\n-------------------------------------------- \n";
+
     }
 }
