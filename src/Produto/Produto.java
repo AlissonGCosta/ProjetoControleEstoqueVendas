@@ -1,5 +1,7 @@
 package Produto;
 
+import java.util.ArrayList;
+
 public class Produto {
     private String nome;
     private int lote;
@@ -33,5 +35,42 @@ public class Produto {
                 "\nId: "+ getId() +
                 "\n-------------------------------------------- \n";
 
+    }
+
+    public static String buscarProdutoNome(ArrayList<Produto> produtos, String nome){
+        String resultado = "";
+        for (int i = 0; i < produtos.size(); i++) {
+            Produto produto = produtos.get(i);
+
+            if(produto.getNome().equalsIgnoreCase(nome)) {
+
+                resultado +="Nome do produto: " + produto.getNome() +
+                        "\nPreço: " + produto.getLote() +
+                        "\nID: " + produto.getId() +
+                        "\n-------------------\n";
+            }
+        }
+
+
+        if (resultado.isEmpty()) {
+            return "produto não encontrado";
+        }
+
+        return resultado;
+
+    }
+
+    public static String buscarProdutoLote(ArrayList<Produto> produtos, int lote){
+
+        for(int i = 0; i < produtos.size(); i++){
+
+            if(produtos.get(i).getLote() == lote){
+                return "Nome do produto: " + produtos.get(i).getNome() +
+                        "\nPreço: " + produtos.get(i).getLote() +
+                        "\nID: " + produtos.get(i).getId() +
+                        "\n-------------------\n";
+            }
+        }
+        return null;
     }
 }

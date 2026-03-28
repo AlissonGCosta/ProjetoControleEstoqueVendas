@@ -26,6 +26,7 @@ public class Main {
 
 
             switch (escolhaMenu){
+        //Aqui fazemos a adição dos produtos
                 case 1:
 
                     int newId = 1;
@@ -61,14 +62,41 @@ public class Main {
 
 
                     break;
+            //Aqui listamos os produtos do array
                 case 2:
+
                     for(Produto produto : listaProduto) {
                             System.out.println(produto);
                     }
                     break;
+
+            //Aqui fazemos uma procura pelos itens adcionados
                 case 3:
-                    System.out.println("escolheu o 3");
-                    break;
+
+                    System.out.println("Escolha uma das opções: " +
+                            "\n 1 - procura por Nome" +
+                            "\n 2 - procura por lote");
+                    int escolhaMenuProcura = sc.nextInt();
+                    sc.nextLine();
+
+                    if(escolhaMenuProcura == 1){
+                        System.out.println("Digite o nome do produto: ");
+                        String nomeProdutoPesquisa = sc.nextLine();
+
+
+
+                        System.out.println(Produto.buscarProdutoNome(listaProduto, nomeProdutoPesquisa));
+
+                    }else if(escolhaMenuProcura == 2){
+                        System.out.println("Digite o lote do produto: ");
+                        int loteProdutoPesquisa = sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print(Produto.buscarProdutoLote(listaProduto, loteProdutoPesquisa));
+                    }
+
+
+
                 case 4:
                     System.out.println("escolheu o 4");
                     break;
