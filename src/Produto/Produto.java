@@ -73,4 +73,36 @@ public class Produto {
         }
         return null;
     }
+
+    public static boolean removerPornome(ArrayList<Produto> produtos, String nome){
+        for(int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getNome().equalsIgnoreCase(nome)) {
+                produtos.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean removerPorLote(ArrayList<Produto> produtos, int lote){
+        for(int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getLote() == lote) {
+                produtos.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+  public static boolean removerPorId(ArrayList<Produto> produtos, int id){
+        for(int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getId() == id) {
+                produtos.remove(i);
+                return true;
+            }
+        }
+        return false;
+  }
+
+
 }

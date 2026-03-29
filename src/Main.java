@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean condicaoMenuSimples = true;
-        ArrayList<Produto> listaProduto = new ArrayList<>();
+        ArrayList<Produto> listaProduto = new ArrayList<>();;
 
         while(condicaoMenuSimples){
 
@@ -32,6 +32,7 @@ public class Main {
                     int newId = 1;
                     String escolhaMenuProutos = "s";
                     while(escolhaMenuProutos.equalsIgnoreCase("s")){
+
 
                         System.out.println("Digite o nome do produto: ");
                         String nomeProduto = sc.nextLine();
@@ -62,6 +63,8 @@ public class Main {
 
 
                     break;
+
+
             //Aqui listamos os produtos do array
                 case 2:
 
@@ -79,7 +82,11 @@ public class Main {
                     int escolhaMenuProcura = sc.nextInt();
                     sc.nextLine();
 
+
+
                     if(escolhaMenuProcura == 1){
+
+
                         System.out.println("Digite o nome do produto: ");
                         String nomeProdutoPesquisa = sc.nextLine();
 
@@ -96,9 +103,113 @@ public class Main {
                     }
 
 
-
+                //Aqui fazemos o menu de Delete
                 case 4:
-                    System.out.println("escolheu o 4");
+
+                    System.out.println("Escolha uma das opções: " +
+                            "\n 1 - procura por Nome" +
+                            "\n 2 - procura por lote");
+                    int escolhaMenuProcuraDeletar = sc.nextInt();
+                    sc.nextLine();
+
+                    int quantidade = 0;
+
+                    if(escolhaMenuProcuraDeletar == 1){
+
+                        for(Produto produto : listaProduto) {
+                            System.out.println(produto);
+                        }
+
+
+                        System.out.println("Digite o nome do produto: ");
+                        String nomeProdutoPesquisa = sc.nextLine();
+
+                        //Aqui fizemos um delete por quanntidade de produtos
+
+                        for(int i = 0 ; i < listaProduto.size(); i++){
+                            if(listaProduto.get(i).getNome().equals(nomeProdutoPesquisa)){
+                                quantidade++;
+                                System.out.println("Encontrado:");
+                                System.out.println(listaProduto.get(i).toString());
+
+                            }
+
+
+                        }
+
+                        if(quantidade == 0){
+                            System.out.println("nenhum produto encontrado");
+                        } else if (quantidade == 1) {
+                            boolean removeu = Produto.removerPornome(listaProduto, nomeProdutoPesquisa);
+                            System.out.println(removeu ? "Produto removido com sucesso!" : "Produto não encontrado!");
+
+
+                        }else if(quantidade >= 2){
+
+                            System.out.println("Digite o id do produto: ");
+                            int idProdutoPesquisa = sc.nextInt();
+                            sc.nextLine();
+
+                            boolean removeu = Produto.removerPorId(listaProduto, idProdutoPesquisa);
+
+                            System.out.println(removeu ? "Produto removido com suceeso!" : "produto não removido!");
+
+                        }
+
+
+
+                    //Aqui fizemos o delete por lote
+
+                    }else if(escolhaMenuProcuraDeletar == 2){
+
+                        for(Produto produto : listaProduto) {
+                            System.out.println(produto);
+                        }
+
+                        System.out.println("Digite o lote do produto: ");
+                        int loteProdutoPesquisa = sc.nextInt();
+                        sc.nextLine();
+
+                        for(int i = 0 ; i < listaProduto.size(); i++){
+                            if(listaProduto.get(i).getLote()== loteProdutoPesquisa){
+                                quantidade++;
+                                System.out.println("Encontrado:");
+                                System.out.println(listaProduto.get(i).toString());
+                            }
+                        }
+                        if(quantidade == 0){
+                            System.out.println("nenhum produto encontrado");
+
+                        } else if (quantidade == 1) {
+
+                            boolean removeu = Produto.removerPorLote(listaProduto, loteProdutoPesquisa);
+                            System.out.println(removeu ? "Produto removido com sucesso!" : "Produto não encontrado!");
+
+
+                        }else if(quantidade >= 2){
+
+                            System.out.println("Digite o id do produto: ");
+                            int idProdutoPesquisa = sc.nextInt();
+                            sc.nextLine();
+
+                            boolean removeu = Produto.removerPorId(listaProduto, idProdutoPesquisa);
+
+                            System.out.println(removeu ? "Produto removido com suceeso!" : "produto não removido!");
+
+                        }
+
+
+                    }
+
+                    System.out.println("=====================================" +
+                            "\n nova Lista" +
+                            "\n===========================================");
+
+                    for(Produto produto : listaProduto) {
+                        System.out.println(produto);
+                    }
+
+
                     break;
                 case 0:
 
@@ -109,5 +220,13 @@ public class Main {
             }
 
         }
+
     }
+
+
+
+
+
 }
+
+
