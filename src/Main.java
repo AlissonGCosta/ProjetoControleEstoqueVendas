@@ -11,8 +11,13 @@ public class Main {
         boolean condicaoMenuSimples = true;
         ArrayList<Produto> listaProduto = new ArrayList<>();;
 
+
+
         boolean condicaoMenumaior = true;
         while(condicaoMenumaior){
+
+
+
                 System.out.println("Digite Uma das opções: " +
                         "\n 1 - menu Produtos" +
                         "\n 2 - menu" +
@@ -23,6 +28,8 @@ public class Main {
                 switch (opcaoMenuMaior){
                     case 1:
                         while(condicaoMenuSimples){
+
+                            int verificarQuantidadeEstoque = listaProduto.size();
 
 //Criando o menu Simples para os testes
                             System.out.println("Escolha uma das opções" +
@@ -80,135 +87,157 @@ public class Main {
                                 //Aqui listamos os produtos do array
                                 case 2:
 
-                                    for(Produto produto : listaProduto) {
-                                        System.out.println(produto);
-                                    }
+                                        if(verificarQuantidadeEstoque == 0 ){
+                                            System.out.println("=================================" +
+                                                    "\nvoce Precisa adcionar um produto ao estoque" +
+                                                    "\n ========================================");
+                                        }else {
+                                            for (Produto produto : listaProduto) {
+                                                System.out.println(produto);
+                                            }
+                                        }
+
                                     break;
 
                                 //Aqui fazemos uma procura pelos itens adcionados
                                 case 3:
 
-                                    System.out.println("Escolha uma das opções: " +
-                                            "\n 1 - procura por Nome" +
-                                            "\n 2 - procura por lote");
-                                    int escolhaMenuProcura = sc.nextInt();
-                                    sc.nextLine();
-
-
-
-                                    if(escolhaMenuProcura == 1){
-
-
-                                        System.out.println("Digite o nome do produto: ");
-                                        String nomeProdutoPesquisa = sc.nextLine();
-
-
-
-                                        System.out.println(Produto.buscarProdutoNome(listaProduto, nomeProdutoPesquisa));
-
-                                    }else if(escolhaMenuProcura == 2){
-                                        System.out.println("Digite o lote do produto: ");
-                                        int loteProdutoPesquisa = sc.nextInt();
+                                    if(verificarQuantidadeEstoque == 0 ){
+                                        System.out.println("=================================" +
+                                                "\nvoce Precisa adcionar um produto ao estoque" +
+                                                "\n ========================================");
+                                    }else {
+                                        System.out.println("Escolha uma das opções: " +
+                                                "\n 1 - procura por Nome" +
+                                                "\n 2 - procura por lote");
+                                        int escolhaMenuProcura = sc.nextInt();
                                         sc.nextLine();
 
-                                        System.out.print(Produto.buscarProdutoLote(listaProduto, loteProdutoPesquisa));
+
+
+                                        if(escolhaMenuProcura == 1){
+
+
+                                            System.out.println("Digite o nome do produto: ");
+                                            String nomeProdutoPesquisa = sc.nextLine();
+
+
+
+                                            System.out.println(Produto.buscarProdutoNome(listaProduto, nomeProdutoPesquisa));
+
+                                        }else if(escolhaMenuProcura == 2){
+                                            System.out.println("Digite o lote do produto: ");
+                                            int loteProdutoPesquisa = sc.nextInt();
+                                            sc.nextLine();
+
+                                            System.out.print(Produto.buscarProdutoLote(listaProduto, loteProdutoPesquisa));
+                                        }
                                     }
+
+
 
                                 break;
 
 
                                     //Aqui fazemos o menu de Delete
                                 case 4:
-
-                                    System.out.println("Escolha uma das opções: " +
-                                            "\n 1 - procura por Nome" +
-                                            "\n 2 - procura por lote");
-                                    int escolhaMenuProcuraDeletar = sc.nextInt();
-                                    sc.nextLine();
-
-
-                                    if(escolhaMenuProcuraDeletar == 1){
-
-                                        for(Produto produto : listaProduto) {
-                                            System.out.println(produto);
-                                        }
-
-
-                                        System.out.println("Digite o nome do produto: ");
-                                        String nomeProdutoPesquisa = sc.nextLine();
-
-                                        //Aqui fizemos um delete por quanntidade de produtos
-
-                                       int quantidade = Produto.contarPorNome(listaProduto, nomeProdutoPesquisa);
-                                       System.out.println(Produto.contarPorNome(listaProduto, nomeProdutoPesquisa));
-
-                                        if(quantidade == 0){
-                                            System.out.println("nenhum produto encontrado");
-                                        } else if (quantidade == 1) {
-                                            boolean removeu = Produto.removerPornome(listaProduto, nomeProdutoPesquisa);
-                                            System.out.println(removeu ? "Produto removido com sucesso!" : "Produto não encontrado!");
-
-
-                                        }else if(quantidade >= 2){
-
-                                            System.out.println("Digite o id do produto: ");
-                                            int idProdutoPesquisa = sc.nextInt();
-                                            sc.nextLine();
-
-                                            boolean removeu = Produto.removerPorId(listaProduto, idProdutoPesquisa);
-
-                                            System.out.println(removeu ? "Produto removido com suceeso!" : "produto não removido!");
-
-                                        }
-
-
-
-                                        //Aqui fizemos o delete por lote
-
-                                    }else if(escolhaMenuProcuraDeletar == 2){
-
-                                        for(Produto produto : listaProduto) {
-                                            System.out.println(produto);
-                                        }
-
-                                        System.out.println("Digite o lote do produto: ");
-                                        int loteProdutoPesquisa = sc.nextInt();
+                                    if(verificarQuantidadeEstoque == 0 ){
+                                        System.out.println("=================================" +
+                                                "\nvoce Precisa adcionar um produto ao estoque" +
+                                                "\n ========================================");
+                                    }else {
+                                        System.out.println("Escolha uma das opções: " +
+                                                "\n 1 - procura por Nome" +
+                                                "\n 2 - procura por lote");
+                                        int escolhaMenuProcuraDeletar = sc.nextInt();
                                         sc.nextLine();
 
-                                        int quantidade = Produto.contarPorLote(listaProduto, loteProdutoPesquisa);
-                                        System.out.println(Produto.buscarProdutoLote(listaProduto, loteProdutoPesquisa));
 
-                                        if(quantidade == 0){
-                                            System.out.println("nenhum produto encontrado");
+                                        if(escolhaMenuProcuraDeletar == 1){
 
-                                        } else if (quantidade == 1) {
-
-                                            boolean removeu = Produto.removerPorLote(listaProduto, loteProdutoPesquisa);
-                                            System.out.println(removeu ? "Produto removido com sucesso!" : "Produto não encontrado!");
+                                            for(Produto produto : listaProduto) {
+                                                System.out.println(produto);
+                                            }
 
 
-                                        }else if(quantidade >= 2){
+                                            System.out.println("Digite o nome do produto: ");
+                                            String nomeProdutoPesquisa = sc.nextLine();
 
-                                            System.out.println("Digite o id do produto: ");
-                                            int idProdutoPesquisa = sc.nextInt();
+                                            //Aqui fizemos um delete por quanntidade de produtos
+
+                                            int quantidade = Produto.contarPorNome(listaProduto, nomeProdutoPesquisa);
+                                            System.out.println(Produto.contarPorNome(listaProduto, nomeProdutoPesquisa));
+
+                                            if(quantidade == 0){
+                                                System.out.println("nenhum produto encontrado");
+                                            } else if (quantidade == 1) {
+                                                boolean removeu = Produto.removerPornome(listaProduto, nomeProdutoPesquisa);
+                                                System.out.println(removeu ? "Produto removido com sucesso!" : "Produto não encontrado!");
+
+
+                                            }else if(quantidade >= 2){
+
+                                                System.out.println("Digite o id do produto: ");
+                                                int idProdutoPesquisa = sc.nextInt();
+                                                sc.nextLine();
+
+                                                boolean removeu = Produto.removerPorId(listaProduto, idProdutoPesquisa);
+
+                                                System.out.println(removeu ? "Produto removido com suceeso!" : "produto não removido!");
+
+                                            }
+
+
+
+                                            //Aqui fizemos o delete por lote
+
+                                        }else if(escolhaMenuProcuraDeletar == 2){
+
+                                            for(Produto produto : listaProduto) {
+                                                System.out.println(produto);
+                                            }
+
+                                            System.out.println("Digite o lote do produto: ");
+                                            int loteProdutoPesquisa = sc.nextInt();
                                             sc.nextLine();
 
-                                            boolean removeu = Produto.removerPorId(listaProduto, idProdutoPesquisa);
+                                            int quantidade = Produto.contarPorLote(listaProduto, loteProdutoPesquisa);
+                                            System.out.println(Produto.buscarProdutoLote(listaProduto, loteProdutoPesquisa));
 
-                                            System.out.println(removeu ? "Produto removido com suceeso!" : "produto não removido!");
+                                            if(quantidade == 0){
+                                                System.out.println("nenhum produto encontrado");
+
+                                            } else if (quantidade == 1) {
+
+                                                boolean removeu = Produto.removerPorLote(listaProduto, loteProdutoPesquisa);
+                                                System.out.println(removeu ? "Produto removido com sucesso!" : "Produto não encontrado!");
+
+
+                                            }else if(quantidade >= 2){
+
+                                                System.out.println("Digite o id do produto: ");
+                                                int idProdutoPesquisa = sc.nextInt();
+                                                sc.nextLine();
+
+                                                boolean removeu = Produto.removerPorId(listaProduto, idProdutoPesquisa);
+
+                                                System.out.println(removeu ? "Produto removido com suceeso!" : "produto não removido!");
+
+                                            }
+
 
                                         }
 
+                                        System.out.println("=====================================" +
+                                                "\n nova Lista" +
+                                                "\n===========================================");
 
+                                        for(Produto produto : listaProduto) {
+                                            System.out.println(produto);
+                                        }
                                     }
 
-                                    System.out.println("=====================================" +
-                                            "\n nova Lista" +
-                                            "\n===========================================");
 
-                                    for(Produto produto : listaProduto) {
-                                        System.out.println(produto);
-                                    }
 
 
                                 break;
@@ -216,117 +245,125 @@ public class Main {
                             //Menu para alterar o nome ou o lote do Produto
                                 case 5:
 
+                                    if(verificarQuantidadeEstoque == 0 ){
+                                        System.out.println("=================================" +
+                                                "\nvoce Precisa adcionar um produto ao estoque" +
+                                                "\n ========================================");
+                                    }else {
+                                        boolean escolaMenuAlterarWhile = true;
+                                        while(escolaMenuAlterarWhile) {
 
-                                    boolean escolaMenuAlterarWhile = true;
-                                    while(escolaMenuAlterarWhile) {
-
-                                         System.out.println("escolha uma das opções:" +
-                                            "\n1 - alterar nome do produto" +
-                                            "\n2 - alterar lote do produto" +
-                                            "\n0 - sair ");
+                                            System.out.println("escolha uma das opções:" +
+                                                    "\n1 - alterar nome do produto" +
+                                                    "\n2 - alterar lote do produto" +
+                                                    "\n0 - sair ");
 
                                             int escolhaMenuAlterar = sc.nextInt();
                                             sc.nextLine();
 
-                                        switch (escolhaMenuAlterar) {
-                                            case 1:
-                                                System.out.println("Digite o nome do produto: ");
-                                                String nomeProdutoAlterar = sc.nextLine();
+                                            switch (escolhaMenuAlterar) {
+                                                case 1:
+                                                    System.out.println("Digite o nome do produto: ");
+                                                    String nomeProdutoAlterar = sc.nextLine();
 
-                                                int quantidade = Produto.contarPorNome(listaProduto, nomeProdutoAlterar);
-                                                System.out.println(Produto.buscarProdutoNome(listaProduto, nomeProdutoAlterar));
+                                                    int quantidade = Produto.contarPorNome(listaProduto, nomeProdutoAlterar);
+                                                    System.out.println(Produto.buscarProdutoNome(listaProduto, nomeProdutoAlterar));
 
-                                                if(quantidade == 0){
-                                                    System.out.println("nenhum produto encontrado");
-                                                }else if(quantidade == 1){
-                                                    for(Produto produto : listaProduto) {
-                                                        if(produto.getNome().equalsIgnoreCase(nomeProdutoAlterar)){
-                                                            System.out.println("Digite o novo nome  do produto: ");
-                                                            String novoNomeProduto = sc.nextLine();
-                                                            produto.setNome(novoNomeProduto);
+                                                    if(quantidade == 0){
+                                                        System.out.println("nenhum produto encontrado");
+                                                    }else if(quantidade == 1){
+                                                        for(Produto produto : listaProduto) {
+                                                            if(produto.getNome().equalsIgnoreCase(nomeProdutoAlterar)){
+                                                                System.out.println("Digite o novo nome  do produto: ");
+                                                                String novoNomeProduto = sc.nextLine();
+                                                                produto.setNome(novoNomeProduto);
 
-                                                            System.out.println("nome alterado com sucesso!");
-                                                            System.out.println(Produto.buscarProdutoNome(listaProduto, novoNomeProduto));
+                                                                System.out.println("nome alterado com sucesso!");
+                                                                System.out.println(Produto.buscarProdutoNome(listaProduto, novoNomeProduto));
+                                                            }
+                                                        }
+
+                                                    }else{
+                                                        System.out.println("Digite o id do produto q deseja alterar: ");
+                                                        int idProdutoAlterar = sc.nextInt();
+                                                        sc.nextLine();
+
+
+                                                        for(Produto produto : listaProduto) {
+                                                            if(produto.getId() == idProdutoAlterar){
+                                                                System.out.println("Produto encontrado com sucesso!");
+                                                                System.out.println(produto);
+
+                                                                System.out.println("Digite o novo nome  do produto: ");
+                                                                String novoNomeProduto = sc.nextLine();
+
+                                                                produto.setNome(novoNomeProduto);
+                                                                System.out.println("nome alterado com sucesso!");
+
+                                                                break;
+
+                                                            }
                                                         }
                                                     }
 
-                                                }else{
-                                                    System.out.println("Digite o id do produto q deseja alterar: ");
-                                                    int idProdutoAlterar = sc.nextInt();
+                                                    break;
+                                                case 2:
+                                                    System.out.println("Digite o lote do produto: ");
+                                                    int loteProdutoAlterar = sc.nextInt();
                                                     sc.nextLine();
 
+                                                    System.out.println(Produto.buscarProdutoLote(listaProduto, loteProdutoAlterar));
+                                                    int quantidadeLote = Produto.contarPorLote(listaProduto,loteProdutoAlterar);
 
-                                                    for(Produto produto : listaProduto) {
-                                                        if(produto.getId() == idProdutoAlterar){
-                                                            System.out.println("Produto encontrado com sucesso!");
-                                                            System.out.println(produto);
+                                                    if(quantidadeLote == 0){
+                                                        System.out.println("nenhum produto encontrado");
+                                                    }else if(quantidadeLote == 1){
+                                                        for(Produto produto : listaProduto) {
+                                                            if(produto.getLote() == loteProdutoAlterar){
+                                                                System.out.println("Digite o novo lote do produto: ");
+                                                                int novoLoteProduto = sc.nextInt();
+                                                                sc.nextLine();
+                                                                produto.setLote(novoLoteProduto);
 
-                                                            System.out.println("Digite o novo nome  do produto: ");
-                                                            String novoNomeProduto = sc.nextLine();
+                                                                System.out.println("nome alterado com sucesso!");
+                                                                System.out.println(Produto.buscarProdutoLote(listaProduto, novoLoteProduto));
+                                                            }
+                                                        }
+                                                    }else{
+                                                        System.out.println("Digite o id do produto q deseja alterar: ");
+                                                        int idProdutoAlterar = sc.nextInt();
+                                                        sc.nextLine();
 
-                                                            produto.setNome(novoNomeProduto);
-                                                            System.out.println("nome alterado com sucesso!");
 
-                                                            break;
+                                                        for(Produto produto : listaProduto) {
+                                                            if(produto.getId() == idProdutoAlterar){
+                                                                System.out.println("Produto encontrado com sucesso!");
+                                                                System.out.println(produto);
 
+                                                                System.out.println("Digite o novo lote do produto: ");
+                                                                int novoLoteProduto = sc.nextInt();
+
+                                                                produto.setLote(novoLoteProduto);
+                                                                System.out.println("lote alterado com sucesso!");
+
+                                                                break;
+
+                                                            }
                                                         }
                                                     }
-                                                }
 
-                                                break;
-                                            case 2:
-                                                System.out.println("Digite o lote do produto: ");
-                                                int loteProdutoAlterar = sc.nextInt();
-                                                sc.nextLine();
+                                                    break;
 
-                                                System.out.println(Produto.buscarProdutoLote(listaProduto, loteProdutoAlterar));
-                                                int quantidadeLote = Produto.contarPorLote(listaProduto,loteProdutoAlterar);
-
-                                                if(quantidadeLote == 0){
-                                                    System.out.println("nenhum produto encontrado");
-                                                }else if(quantidadeLote == 1){
-                                                    for(Produto produto : listaProduto) {
-                                                        if(produto.getLote() == loteProdutoAlterar){
-                                                            System.out.println("Digite o novo lote do produto: ");
-                                                            int novoLoteProduto = sc.nextInt();
-                                                            sc.nextLine();
-                                                            produto.setLote(novoLoteProduto);
-
-                                                            System.out.println("nome alterado com sucesso!");
-                                                            System.out.println(Produto.buscarProdutoLote(listaProduto, novoLoteProduto));
-                                                        }
-                                                    }
-                                                }else{
-                                                    System.out.println("Digite o id do produto q deseja alterar: ");
-                                                    int idProdutoAlterar = sc.nextInt();
-                                                    sc.nextLine();
-
-
-                                                    for(Produto produto : listaProduto) {
-                                                        if(produto.getId() == idProdutoAlterar){
-                                                            System.out.println("Produto encontrado com sucesso!");
-                                                            System.out.println(produto);
-
-                                                            System.out.println("Digite o novo lote do produto: ");
-                                                            int novoLoteProduto = sc.nextInt();
-
-                                                            produto.setLote(novoLoteProduto);
-                                                            System.out.println("lote alterado com sucesso!");
-
-                                                            break;
-
-                                                        }
-                                                    }
-                                                }
-
-                                                break;
-
-                                            case 0 :
-                                                escolaMenuAlterarWhile = false;
-                                                System.out.println("Saindo...");
-
+                                                case 0 :
+                                                    escolaMenuAlterarWhile = false;
+                                                    System.out.println("Saindo...");
                                                 break;
                                         }
+                                    }
+
+
+
+
                                     }
 
                                 break;
