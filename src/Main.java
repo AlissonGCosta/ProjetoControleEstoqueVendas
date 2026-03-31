@@ -1,4 +1,5 @@
 import Produto.Produto;
+import Produto.Clientes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,10 +9,11 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        ArrayList<Produto> listaProduto = new ArrayList<>();
+        ArrayList<Clientes> listaCliente = new ArrayList<>();
+
         boolean condicaoMenuSimples = true;
-        ArrayList<Produto> listaProduto = new ArrayList<>();;
-
-
 
         boolean condicaoMenumaior = true;
         while(condicaoMenumaior){
@@ -19,14 +21,15 @@ public class Main {
 
 
                 System.out.println("Digite Uma das opções: " +
-                        "\n 1 - menu Produtos" +
-                        "\n 2 - menu" +
+                        "\n 1 - Menu Produtos" +
+                        "\n 2 - Menu Clientes/Fornecedores" +
                         "\n 3 - menu" +
                         "\n 0 - sair");
                 int opcaoMenuMaior= sc.nextInt();
                 sc.nextLine();
                 switch (opcaoMenuMaior){
                     case 1:
+
                         while(condicaoMenuSimples){
 
                             int verificarQuantidadeEstoque = listaProduto.size();
@@ -378,6 +381,81 @@ public class Main {
                         }
                         break;
                     case 2:
+
+                        while(condicaoMenuSimples){
+
+                            System.out.println("Digite uma das opçoes: " +
+                                    "\n 1 - Clientes" +
+                                    "\n 2 - Fornecedores" +
+                                    "\n 0 - voltar ao menu principal");
+                            int opcaoMenuClienteFornecedor = sc.nextInt();
+                            sc.nextLine();
+
+                            switch (opcaoMenuClienteFornecedor) {
+                                case 1:
+                                    boolean condicaoMenuClientes = true;
+                                    while(condicaoMenuClientes){
+                                        System.out.println("Digite uma das opções: " +
+                                                "\n 1 - Cadastrar Clientes" +
+                                                "\n 2 - Listar todos os clientes" +
+                                                "\n 0 - voltar ao menu Clientes/Fornecedores");
+                                            int opcaoMenuClientes = sc.nextInt();
+                                            sc.nextLine();
+
+
+                                        switch (opcaoMenuClientes) {
+                                            case 1:
+
+                                                String condicaoMenuCadastrarClientes = "s";
+                                                int idCliente = 1;
+
+                                                while(condicaoMenuCadastrarClientes.equalsIgnoreCase("s")){
+                                                    System.out.println("Digite o nome do cliente: ");
+                                                    String nomeCliente = sc.nextLine();
+
+                                                    System.out.println("Digite o cpf do cliente: ");
+                                                    String cpfCliente = sc.nextLine();
+
+                                                    System.out.println("Digite o numero de telefone do cliente:  obs: Sem pontos e traços");
+                                                    int numeroCliente = sc.nextInt();
+                                                    sc.nextLine();
+
+
+
+                                                    Clientes clientes = new Clientes(nomeCliente, cpfCliente, numeroCliente, idCliente);
+                                                    listaCliente.add(clientes);
+                                                    idCliente++;
+
+                                                    System.out.println("Clientes cadastrados com sucesso!");
+                                                    System.out.println(listaCliente.toString());
+
+                                                    System.out.println("Deseja cadastrar outro Cliente? (S/N)");
+                                                    condicaoMenuCadastrarClientes = sc.nextLine();
+
+
+                                                }
+
+                                            break;
+
+                                            case 2:
+                                                System.out.println("Voce escolheu o menu 2");
+                                            break;
+
+                                            case 0:
+
+                                                condicaoMenuClientes= false;
+                                                System.out.println("Saindo...");
+                                            break;
+                                                }
+                                            }
+                                    }
+                                break;
+
+
+
+
+                        }
+
                         System.out.println("menu 2");
                         break;
                     case 3:
