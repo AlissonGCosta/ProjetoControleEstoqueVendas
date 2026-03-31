@@ -104,5 +104,41 @@ public class Produto {
         return false;
   }
 
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+    public void setLote(int lote){
+        this.lote = lote;
+    }
 
+    public static int contarPorNome(ArrayList<Produto> produtos, String nome){
+        int quantidade = 0;
+        for(Produto produto : produtos) {
+            if(produto.getNome().equalsIgnoreCase(nome)) {
+                quantidade++;
+            }
+        }
+        return quantidade;
+    }
+    public static int contarPorLote(ArrayList<Produto> produtos, int lote){
+        int quantidade = 0;
+        for(Produto produto : produtos) {
+            if(produto.getLote() == lote) {
+                quantidade++;
+
+            }
+        }
+        return quantidade;
+    }
+
+    public static int contarPorId(ArrayList<Produto> produtos, int id){
+        int quantidade = 0;
+        for(Produto produto : produtos) {
+            if(produto.getId() == id) {
+                quantidade++;
+
+            }
+        }
+        return quantidade;
+    }
 }
