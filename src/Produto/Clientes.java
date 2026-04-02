@@ -12,6 +12,31 @@ public class Clientes {
         this.numeroTelefone = numeroTelefone;
         this.id = id;
     }
+
+    public int getId() {
+        return id;
+    }
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+    public String getCpf() {
+        return cpf;
+    }
+    public int getNumeroTelefone() {
+        return numeroTelefone;
+    }
+
+
+    @Override
+    public String toString() {
+        return "\n===================================" +
+                "\n Cliente: " + getNomeCliente() +
+                "\n CPF: " + getCpf() +
+                "\n Numero Telefone: " + getNumeroTelefone() +
+                "\n===================================";
+    }
+
+
 }
 
 
