@@ -1,6 +1,8 @@
 import Produto.Produto;
 import Produto.Clientes;
+import Produto.Fornecedores;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class Main {
 
         ArrayList<Produto> listaProduto = new ArrayList<>();
         ArrayList<Clientes> listaCliente = new ArrayList<>();
+        ArrayList<Fornecedores> listaFornecedores = new ArrayList<>();
 
 
         boolean condicaoMenumaior = true;
@@ -378,6 +381,7 @@ public class Main {
                 case 2:
                     boolean condicaoMenuSimplesClientesFornecedor = true;
 
+
                     while (condicaoMenuSimplesClientesFornecedor) {
 
                         System.out.println("Digite uma das opçoes: " +
@@ -387,10 +391,15 @@ public class Main {
                         int opcaoMenuClienteFornecedor = sc.nextInt();
                         sc.nextLine();
 
+                        int ClientesCadastrados = listaCliente.size();
+
                         switch (opcaoMenuClienteFornecedor) {
+
 
 //Aqui começa o menu de Clientes
                             case 1:
+
+
 
                                 boolean condicaoMenuClientes = true;
                                 while (condicaoMenuClientes) {
@@ -401,12 +410,11 @@ public class Main {
                                     int opcaoMenuClientes = sc.nextInt();
                                     sc.nextLine();
 
-
+//Aqui Criamos a Lista de Clientes
                                     switch (opcaoMenuClientes) {
 
 
                                         case 1:
-
 
                                             int idCliente = 1;
                                             String condicaoMenuCadastroCLiente = "s";
@@ -442,9 +450,16 @@ public class Main {
 
                                         case 2:
 
-                                            for(Clientes cliente : listaCliente) {
-                                                System.out.println(cliente);
+                                            if(ClientesCadastrados == 0){
+                                                System.out.println("Nenhum cliente Cadastrado");
+                                            }else{
+
+                                                for(Clientes cliente : listaCliente) {
+                                                    System.out.println(cliente);
+                                                }
+
                                             }
+
 
                                             break;
 
@@ -459,14 +474,80 @@ public class Main {
 
                                 }
 
-
                                 break;
 //Finalizamos o cadastro dos Clientes e o listamento deles
 
 //Aqui começamos o menu de fornecedores
                             case 2:
 
-                                System.out.println();
+
+                                boolean condicaoMenuFornecedores = true;
+                                while (condicaoMenuFornecedores) {
+
+                                    System.out.println("Digite uma Dessas Opções: " +
+                                            "\n 1 - Cadastrar Fornecedores" +
+                                            "\n 2 - Listar todos os fornecedores" +
+                                            "\n 0 - voltar ao menu Clientes/Fornecedores");
+                                    int opcaoMenuFornecedores = sc.nextInt();
+                                    sc.nextLine();
+
+                                    int FornecedoresCadastrados = listaFornecedores.size();
+
+                                    switch (opcaoMenuFornecedores) {
+
+
+
+                                        //Aqui vamos adcionar a lista de Fornecedores
+                                        case 1:
+
+                                            String fornecedoresCadastroFornecedor = "s";
+                                            int idFornecedor = 1;
+
+                                            while (fornecedoresCadastroFornecedor.equalsIgnoreCase("s")) {
+                                                System.out.println("Digite o nome do fornecedor: ");
+                                                String nomeFornecedor = sc.nextLine();
+
+                                                System.out.println("Digite o cnpj do fornecedor: ");
+                                                String cnpjFornecedor = sc.nextLine();
+
+                                                System.out.println("Descreva o Insumo desse Fornecedor: ");
+                                                String insumoFornecedor = sc.nextLine();
+
+                                                Fornecedores fornecedor = new Fornecedores(nomeFornecedor, cnpjFornecedor, insumoFornecedor, idFornecedor);
+                                                listaFornecedores.add(fornecedor);
+                                                idFornecedor++;
+
+                                                System.out.println("-------------------------------------------" +
+                                                        "\nFornecedores cadastrados com sucesso!" +
+                                                        "\n-------------------------------------------");
+                                                System.out.println(fornecedor);
+
+                                                System.out.println("Deseja cadastrar outro Fornecedor? (S/N): ");
+                                                fornecedoresCadastroFornecedor = sc.nextLine();
+
+                                            }
+
+                                            break;
+                                    //Aqui listamos todos os Fornecedores se ouver
+                                        case 2:
+
+                                            if (FornecedoresCadastrados == 0){
+                                                System.out.println("Nenhum fornecedor cadastrado");
+                                            }else{
+
+                                                for(Fornecedores fornecedor : listaFornecedores) {
+                                                    System.out.println(fornecedor);
+                                                }
+                                            }
+
+                                            break;
+
+                                        case 0:
+                                            condicaoMenuFornecedores = false;
+                                            System.out.println("Saindo...");
+                                    }
+
+                                }
 
                                 break;
 //Aqui Finalizamos a segunda parte do menu tanto Fornecedores quanto listando
@@ -478,6 +559,11 @@ public class Main {
                         }
 
                     }
+
+                    break;
+    //Finalizamos o menu de Clientes/Fornecedores
+                case 3:
+                    break;
 
             }
 

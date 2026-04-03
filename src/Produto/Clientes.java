@@ -1,5 +1,7 @@
 package Produto;
 
+import java.util.ArrayList;
+
 public class Clientes {
     private String nomeCliente;
     private String cpf;
@@ -36,7 +38,8 @@ public class Clientes {
                 "\n===================================";
     }
 
-
 }
+
+
 
 
