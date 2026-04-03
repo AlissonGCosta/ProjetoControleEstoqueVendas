@@ -24,7 +24,7 @@ public class Main {
             System.out.println("Digite Uma das opções: " +
                     "\n 1 - Menu Produtos" +
                     "\n 2 - Menu Clientes/Fornecedores" +
-                    "\n 3 - menu" +
+                    "\n 3 - Registro/Vendas" +
                     "\n 0 - sair");
             int opcaoMenuMaior = sc.nextInt();
             sc.nextLine();
@@ -563,9 +563,52 @@ public class Main {
                     break;
     //Finalizamos o menu de Clientes/Fornecedores
                 case 3:
+
+                    boolean condicaoMenuRegistro = true;
+
+                    while (condicaoMenuRegistro) {
+
+                        System.out.println("Selecione uma das opções: " +
+                                "\n 1 - registro de Movimentação do produtos" +
+                                "\n 2 - vender Produtos em estoque" +
+                                "\n 0 - Voltar ao menu principal");
+                        int opcaoMenu3 = sc.nextInt();
+
+                        switch(opcaoMenu3){
+                            case 1:
+
+                                if(listaProduto.size() == 0){
+                                    System.out.println("Nenhum produto cadastrado");
+                                }else{
+
+                                    System.out.println("menu 1");
+                                }
+
+
+                                break;
+                            case 2:
+                                System.out.println("menu 2");
+
+                            case 0:
+                                condicaoMenuRegistro = false;
+
+                                System.out.println("Saindo...");
+                        }
+                    }
+
+
+
+
                     break;
 
+                case 0:
+
+                    condicaoMenumaior = false;
+
+                    System.out.println("Saindo...");
             }
+
+
 
         }
 
